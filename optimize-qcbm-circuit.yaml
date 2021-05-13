@@ -30,6 +30,16 @@ imports:
   parameters:
     repository: "git@github.com:zapatacomputing/qe-qulacs.git"
     branch: "master"
+- name: qe-forest
+  type: git
+  parameters:
+    repository: "git@github.com:zapatacomputing/qe-forest.git"
+    branch: "master"
+- name: qe-qiskit
+  type: git
+  parameters:
+    repository: "git@github.com:zapatacomputing/qe-qiskit.git"
+    branch: "master"
 
 steps:
 
@@ -87,7 +97,7 @@ steps:
   config:
     runtime:
       language: python3
-      imports:  [z-quantum-core, z-quantum-optimizers, z-quantum-qcbm, qe-qulacs]
+      imports:  [z-quantum-core, z-quantum-optimizers, z-quantum-qcbm, qe-qiskit] #qe-qiskit
       parameters:
         file: z-quantum-qcbm/steps/optimize_variational_qcbm_circuit.py
         function: optimize_variational_qcbm_circuit
@@ -108,8 +118,8 @@ steps:
   - distance_measure_parameters: '{"epsilon": 1e-6}'
     type: string
   - backend_specs: 
-      module_name: qequlacs.simulator
-      function_name: QulacsSimulator
+      module_name: qeqiskit.simulator #qeqiskit.simulator 
+      function_name: QiskitSimulator #QiskitSimulator
     type: specs
   - optimizer_specs:
       module_name: zquantum.optimizers.cma_es_optimizer
