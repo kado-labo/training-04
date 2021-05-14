@@ -8,7 +8,7 @@ imports:
 - name: bars-and-stripes
   type: git
   parameters:
-    repository: "git@github.com:<your account name>/training-04.git"
+    repository: "git@github.com:kado-lab/training-04.git"
     branch: "master"
 - name: z-quantum-core
   type: git
@@ -109,7 +109,7 @@ steps:
     type: int
   - n_layers: 4
     type: int
-  - topology: line #use "topology": "line" as an alternative experiment.
+  - topology: all #use "topology": "line" as an alternative experiment.
     type: string
   - distance_measure_specs: 
       module_name: zquantum.core.bitstring_distribution
@@ -119,11 +119,11 @@ steps:
     type: string
   - backend_specs:
       module_name: qequlacs.simulator
-      function_name: ForestSimulator
-  # - backend_specs: 
-  #     module_name: qeforest.simulator
-  #     function_name: ForestSimulator
-  #     device_name: wavefunction-simulator
+      function_name: QulacsSimulator
+  #- backend_specs: 
+  #    module_name: qeforest.simulator
+  #    function_name: ForestSimulator
+  #    device_name: wavefunction-simulator
     type: specs
   - optimizer_specs:
       module_name: zquantum.optimizers.cma_es_optimizer
